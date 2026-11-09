@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Jaya — Bridal & Festive Couture</title>
+  <meta name="description" content="Jaya — bridal packages, half sarees, signature blouses and long frocks." />
+  <meta name="theme-color" content="#0d0607" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230d0607'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='serif' font-size='40' fill='%23d9b26f'%3EJ%3C/text%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..600&family=Tenor+Sans&family=Hanken+Grotesk:wght@300;400;500&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet" />
+
+  <!-- First frame preloads so the hero is never blank -->
+  <link rel="preload" as="image" href="assets/frames/saree/lg/001.webp" media="(min-width: 700px)" />
+  <link rel="preload" as="image" href="assets/frames/saree/sm/001.webp" media="(max-width: 699px)" />
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="is-loading">
+
+  <!-- ============ LOADER ============ -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__mark">जया</div>
+    <div class="loader__bar"><span id="loaderBar"></span></div>
+    <div class="loader__meta"><span>Unfolding the silk</span><span id="loaderPct">0%</span></div>
+  </div>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <a href="#top" class="nav__brand" aria-label="Jaya home">
+      <span class="nav__word">JAYA</span>
+      <span class="nav__deva" aria-hidden="true">जया</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#collections">Collections</a>
+      <a href="#house">The House</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <a href="#visit" class="nav__cta">Book a visit</a>
+  </header>
+
+  <main id="top">
+    <!-- ============ CINEMATIC SCROLL HERO ============ -->
+    <section class="hero" id="hero" aria-label="Jaya — the veil falls, the boutique appears">
+      <div class="hero__stage">
+        <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
+
+        <div class="hero__fx hero__vignette" aria-hidden="true"></div>
+        <div class="hero__fx hero__grain" aria-hidden="true"></div>
+        <div class="hero__fx hero__shade" id="heroShade" aria-hidden="true"></div>
+
+        <div class="letterbox letterbox--top" aria-hidden="true"></div>
+        <div class="letterbox letterbox--bottom" aria-hidden="true"></div>
+
+        <!-- Scene captions: data-in / data-out are hero scroll progress (0–1) -->
+        <div class="cap cap--title" data-in="0" data-out="0.075">
+          <p class="cap__eyebrow">Bridal &amp; Festive Couture</p>
+          <h1 class="cap__display split">Jaya</h1>
+          <p class="cap__lede">Draped in silk. Woven with stories.</p>
+        </div>
+
+        <div class="cap cap--left" data-in="0.1" data-out="0.24">
+          <p class="cap__eyebrow">Chapter I &mdash; The Silk</p>
+          <h2 class="cap__headline split">Every fold<br />holds a story.</h2>
+          <p class="cap__body">Banarasi silk, gold zari and the glow of a thousand celebrations.</p>
+        </div>
+
+        <div class="cap cap--right" data-in="0.27" data-out="0.42">
+          <p class="cap__eyebrow">Chapter II &mdash; The Veil</p>
+          <h2 class="cap__headline split">Let the<br /><em>veil</em> fall.</h2>
+        </div>
+
+        <div class="cap cap--center" data-in="0.53" data-out="0.66">
+          <p class="cap__eyebrow">Chapter III &mdash; The House</p>
+          <h2 class="cap__headline cap__headline--xl split">Welcome<br />to <em>Jaya</em></h2>
+        </div>
+
+        <div class="cap cap--list" data-in="0.69" data-out="0.86">
+          <p class="cap__eyebrow">Inside the boutique</p>
+          <ul class="cap__items">
+            <li style="--d:0">Bridal Packages</li>
+            <li style="--d:1">Half Sarees</li>
+            <li style="--d:2">Signature Blouses</li>
+            <li style="--d:3">Long Frocks</li>
+          </ul>
+        </div>
+
+        <div class="cap cap--final" data-in="0.9" data-out="1.2">
+          <h2 class="cap__headline split">Your story<br />begins <em>here.</em></h2>
+          <div class="cap__actions">
+            <a href="#collections" class="btn btn--gold">Explore collections</a>
+            <a href="#visit" class="btn btn--ghost">Visit the boutique</a>
+          </div>
+        </div>
+
+        <!-- Film HUD -->
+        <div class="hud" aria-hidden="true">
+          <div class="hud__chapter">
+            <span class="hud__roman" id="hudRoman">I</span>
+            <span class="hud__name" id="hudName">The Silk</span>
+          </div>
+          <div class="hud__track"><span id="hudProgress"></span></div>
+          <div class="hud__tc"><span class="hud__rec"></span><span id="hudTC">00:00:00:00</span></div>
+        </div>
+
+        <div class="scrollcue" id="scrollCue" aria-hidden="true">
+          <span>Scroll to unveil</span>
+          <i></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ THE HOUSE ============ -->
+    <section class="house" id="house">
+      <p class="eyebrow reveal">The House of Jaya</p>
+      <p class="house__statement reveal">
+        A boutique for <em>brides</em>, <em>mothers</em> and every celebration in between &mdash;
+        where silk is chosen with the same care as the moments it is made for.
+      </p>
+      <figure class="house__figure reveal">
+        <img src="assets/img/boutique.webp" alt="Inside the Jaya boutique: racks of lehengas and blouses under warm golden lights" loading="lazy" width="1600" height="900" />
+      </figure>
+    </section>
+
+    <!-- ============ COLLECTIONS ============ -->
+    <section class="collections" id="collections">
+      <div class="collections__head">
+        <p class="eyebrow reveal">Collections</p>
+        <h2 class="collections__title reveal">Made for the<br /><em>moments</em> that matter</h2>
+      </div>
+
+      <ol class="clist">
+        <li class="clist__item reveal" data-img="assets/img/bridal-racks.webp">
+          <span class="clist__num">01</span>
+          <span class="clist__name">Bridal Packages</span>
+          <span class="clist__note">Complete bridal looks, curated together</span>
+          <img class="clist__thumb" src="assets/img/bridal-racks.webp" alt="" loading="lazy" />
+        </li>
+        <li class="clist__item reveal" data-img="assets/img/half-sarees.webp">
+          <span class="clist__num">02</span>
+          <span class="clist__name">Half Sarees</span>
+          <span class="clist__note">Lehenga, blouse and dupatta in harmony</span>
+          <img class="clist__thumb" src="assets/img/half-sarees.webp" alt="" loading="lazy" />
+        </li>
+        <li class="clist__item reveal" data-img="assets/img/silk.webp">
+          <span class="clist__num">03</span>
+          <span class="clist__name">Signature Blouses</span>
+          <span class="clist__note">The Jaya signature, detailed by hand</span>
+          <img class="clist__thumb" src="assets/img/silk.webp" alt="" loading="lazy" />
+        </li>
+        <li class="clist__item reveal" data-img="assets/img/long-frocks.webp">
+          <span class="clist__num">04</span>
+          <span class="clist__name">Long Frocks</span>
+          <span class="clist__note">Flowing silhouettes for festive evenings</span>
+          <img class="clist__thumb" src="assets/img/long-frocks.webp" alt="" loading="lazy" />
+        </li>
+      </ol>
+      <div class="cursor-preview" id="cursorPreview" aria-hidden="true"><img alt="" /></div>
+    </section>
+
+    <!-- ============ VISIT ============ -->
+    <section class="visit" id="visit">
+      <div class="visit__inner">
+        <p class="eyebrow reveal">Visit the boutique</p>
+        <h2 class="visit__title reveal">Come see it <em>in the light.</em></h2>
+        <p class="visit__copy reveal">Silk is meant to be touched. Book a personal appointment and our stylists will have your shortlist ready when you arrive.</p>
+        <dl class="visit__details reveal">
+          <div><dt>Address</dt><dd>[ Add store address ]</dd></div>
+          <div><dt>Hours</dt><dd>[ Add opening hours ]</dd></div>
+          <div><dt>Call</dt><dd>[ Add phone number ]</dd></div>
+        </dl>
+        <div class="visit__actions reveal">
+          <a href="#" class="btn btn--gold">Book an appointment</a>
+          <a href="#" class="btn btn--ghost btn--dark">Get directions</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span class="footer__mark">जया</span>
+    <span>&copy; <span id="year"></span> Jaya. All rights reserved.</span>
+  </footer>
+
+  <script src="assets/js/hero.js"></script>
+</body>
+</html>
